@@ -7,6 +7,7 @@
   "author": "Carlos Roberto Gomes Junior <carlos.rberto@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@babel/polyfill": "^7.0.0",
     "axios": "^0.18.0",
     "jest": "^23.6.0",
     "prop-types": "^15.6.2",
@@ -26,6 +27,7 @@
     "@babel/core": "^7.2.0",
     "@babel/preset-env": "^7.2.0",
     "@babel/preset-react": "^7.0.0",
+    "axios-mock-adapter": "^1.15.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.4",
