@@ -21,6 +21,12 @@
   "settings": {
     "react": {
       "version": "16"
+    },
+    "import/resolver": {
+      "babel-plugin-root-import": {
+        "rootPathPrefix": "~",
+        "rootPathSuffix": "src"
+      }
     }
   }
 }
