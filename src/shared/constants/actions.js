@@ -2,3 +2,4 @@ export const REQUEST = 'REQUEST';
 export const PENDING = 'PENDING';
 export const SUCCESS = 'SUCCESS';
 export const FAILURE = 'FAILURE';
+export const SHOW_DETAIL = 'SHOW_DETAIL';

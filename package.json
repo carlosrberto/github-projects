@@ -13,7 +13,8 @@
     "prop-types": "^15.6.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
-    "redux-define": "^1.1.1"
+    "redux-define": "^1.1.1",
+    "redux-saga": "^0.16.2"
   },
   "scripts": {
     "start": "webpack-dev-server --open --config ./scripts/webpack/webpack.development.js",

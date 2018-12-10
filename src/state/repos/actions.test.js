@@ -1,23 +1,49 @@
-import { LOAD_REPOS } from './types';
-import { loadReposRequest, loadReposSuccess, loadReposFailure } from './actions';
+import { LOAD_REPOS, REPO } from './types';
+import {
+  loadReposRequest,
+  loadReposSuccess,
+  loadReposFailure,
+  showRepoDetail,
+  loadRepoContributorsRequest,
+  loadRepoContributorsSuccess,
+  loadRepoContributorsFailure,
+} from './actions';
 
-describe('loadReposRequest', () => {
+const payload = {};
+
+describe('repos actions', () => {
   it('should create action for `loadReposRequest`', () => {
-    const payload = {};
-    expect(loadReposRequest(payload)).toEqual({ type: LOAD_REPOS.REQUEST, payload });
+    expect(loadReposRequest(payload))
+      .toEqual({ type: LOAD_REPOS.REQUEST, payload });
   });
-});
 
-describe('loadReposSuccess', () => {
   it('should create action for `loadReposSuccess`', () => {
-    const payload = {};
-    expect(loadReposSuccess(payload)).toEqual({ type: LOAD_REPOS.SUCCESS, payload });
+    expect(loadReposSuccess(payload))
+      .toEqual({ type: LOAD_REPOS.SUCCESS, payload });
   });
-});
 
-describe('loadReposFailure', () => {
   it('should create action for `loadReposFailure`', () => {
-    const payload = { error: {} };
-    expect(loadReposFailure(payload)).toEqual({ type: LOAD_REPOS.FAILURE, payload });
+    expect(loadReposFailure(payload))
+      .toEqual({ type: LOAD_REPOS.FAILURE, payload });
+  });
+
+  it('should create action for `showRepoDetail`', () => {
+    expect(showRepoDetail(payload))
+      .toEqual({ type: REPO.SHOW_DETAIL, payload });
+  });
+
+  it('should create action for `loadRepoContributorsRequest`', () => {
+    expect(loadRepoContributorsRequest(payload))
+      .toEqual({ type: REPO.LOAD_CONTRIBUTORS_REQUEST, payload });
+  });
+
+  it('should create action for `loadRepoContributorsSuccess`', () => {
+    expect(loadRepoContributorsSuccess(payload))
+      .toEqual({ type: REPO.LOAD_CONTRIBUTORS_SUCCESS, payload });
+  });
+
+  it('should create action for `loadRepoContributorsFailure`', () => {
+    expect(loadRepoContributorsFailure(payload))
+      .toEqual({ type: REPO.LOAD_CONTRIBUTORS_FAILURE, payload });
   });
 });
