@@ -1,10 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Main from '~/ui/Main';
 
-import SampleElement from './SampleElement';
+import '~/styles/global.sass';
 
 ReactDOM.render(
-  <div>React App, <SampleElement>sample styled element</SampleElement></div>,
+  <Main sidebar={<div>Sidebar</div>}>
+    <p>
+      lorem ipsum
+    </p>
+  </Main>,
   document.getElementById('root'),
 );
 

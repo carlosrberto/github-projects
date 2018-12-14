@@ -12,7 +12,7 @@ module.exports = merge(common, {
           'style-loader',
           loaders.cssModuleLoader,
           loaders.postCSSLoader,
-          'sass-loader',
+          loaders.sassLoader,
         ],
       },
     ],

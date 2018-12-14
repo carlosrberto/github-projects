@@ -1,6 +1,12 @@
 const postcssPresetEnv = require('postcss-preset-env');
 
 module.exports = {
+  sassLoader: {
+    loader: 'sass-loader',
+    options: {
+      includePaths: ['node_modules', './src'],
+    },
+  },
   cssModuleLoader: {
     loader: 'css-loader',
     options: {
