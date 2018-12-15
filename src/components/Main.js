@@ -1,20 +1,28 @@
 import React from 'react';
+import { GoMarkGithub } from 'react-icons/go';
 
 import Header from '~/ui/Header';
 import Content from '~/ui/Content';
 import ReadmeFile from '~/ui/ReadmeFile';
-import Contributors from '~/ui/Contributors';
+import Section from '~/ui/Section';
 
 import ss from './Main.sass';
 
 const Main = () => (
   <React.Fragment>
     <Header>
-      <h2 className={ss.header}>facebook/react</h2>
+      <h2 className={ss.header}>
+        <GoMarkGithub className={ss.iconOcto} /> facebook/react
+      </h2>
     </Header>
     <Content>
       <div className={ss.content}>
-        <Contributors />
+        <Section title="About">
+          <p>lorem</p>
+        </Section>
+        <Section title="Contributors">
+          <p>lorem</p>
+        </Section>
         <ReadmeFile />
       </div>
     </Content>
