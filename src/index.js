@@ -1,15 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Main from '~/ui/Main';
+import Root from '~/components/Root';
 
 import '~/styles/global.sass';
 
 ReactDOM.render(
-  <Main sidebar={<div>Sidebar</div>}>
-    <p>
-      lorem ipsum
-    </p>
-  </Main>,
+  <Root />,
   document.getElementById('root'),
 );
 
