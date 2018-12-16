@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/carlosrberto/github-projects.svg?branch=master)](https://travis-ci.org/carlosrberto/github-projects)
 # Github Projects
 
 ## Notes

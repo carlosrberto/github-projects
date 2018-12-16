@@ -9,6 +9,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
     "axios": "^0.18.0",
+    "coveralls": "^3.0.2",
     "history": "^4.7.2",
     "jest": "^23.6.0",
     "prop-types": "^15.6.2",
@@ -31,7 +32,12 @@
     "lint:fix": "npm run lint -- --fix",
     "test": "jest --config jest.config.js",
     "test:watch": "npm run test -- --watch",
+    "cov": "jest --coverage --config jest.config.js",
+    "cov:publish": "cat ./.coverage/lcov.info | coveralls",
     "clean": "rimraf dist"
+  },
+  "resolutions": {
+    "babel-core": "7.0.0-bridge.0"
   },
   "devDependencies": {
     "@babel/core": "^7.2.0",
