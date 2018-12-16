@@ -7,18 +7,32 @@ import Main from '~/components/Main';
 import ss from './App.sass';
 
 class App extends React.Component {
+  componentDidMount() {
+    const { params } = this.props.match;
+    const { loadReposRequest, showRepoDetail } = this.props;
+
+    loadReposRequest({
+      org: params.org,
+    });
+
+    showRepoDetail({ name: params.repo });
+  }
+
   componentDidUpdate(prevProps) {
+    const { loadReposRequest, showRepoDetail } = this.props;
     const { params } = this.props.match;
     const { params: prevParams } = prevProps.match;
 
     if (params.org !== prevParams.org) {
       // update org
-      console.log('call org fetch'); /* eslint-disable-line no-console */
+      loadReposRequest({
+        org: params.org,
+      });
     }
 
     if (params.repo !== prevParams.repo) {
       // update repo
-      console.log('call repo fetch', params.repo); /* eslint-disable-line no-console */
+      showRepoDetail({ name: params.repo });
     }
   }
 
@@ -46,6 +60,8 @@ App.propTypes = {
   sidebar: PropTypes.node,
   children: PropTypes.node,
   match: PropTypes.object,
+  loadReposRequest: PropTypes.func,
+  showRepoDetail: PropTypes.func,
 };
 
 export default App;

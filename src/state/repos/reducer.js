@@ -7,8 +7,7 @@ const initialState = {
   filterTerm: '',
   byId: {},
   allIds: [],
-  filteredIds: [],
-  activeId: null,
+  activeRepo: null,
 };
 
 const repos = (state = initialState, action) => {
@@ -43,14 +42,17 @@ const repos = (state = initialState, action) => {
         loadingError: true,
       };
 
+    case REPO.SHOW_DETAIL:
+      return {
+        ...state,
+        activeRepo: action.payload.name,
+      };
+
     case REPO.FILTER: {
       const { payload: { term } } = action;
       return {
         ...state,
         filterTerm: term,
-        filteredIds: state.allIds.filter(
-          item => state.byId[item].name.includes(term),
-        ),
       };
     }
 

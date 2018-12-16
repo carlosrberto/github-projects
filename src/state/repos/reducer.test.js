@@ -7,8 +7,7 @@ const initialState = {
   filterTerm: '',
   byId: {},
   allIds: [],
-  filteredIds: [],
-  activeId: null,
+  activeRepo: null,
 };
 
 describe('repos reducer', () => {
@@ -42,24 +41,18 @@ describe('repos reducer', () => {
   });
 
   it('should handle `filterRepos` action', () => {
-    const state = {
-      filterTerm: '',
-      byId: {
-        1: { name: 'lorem ipsum' },
-        2: { name: 'ipsum dolor lorem' },
-        3: { name: 'dolor' },
-        4: { name: 'ipsum' },
-        5: { name: 'lorem' },
-      },
-      allIds: [1, 2, 3, 4, 5],
-      filteredIds: [],
-    };
-
-    expect(reducer(state, actions.filterRepos({ term: 'lo' })))
+    expect(reducer(initialState, actions.filterRepos({ term: 'lo' })))
       .toEqual({
-        ...state,
+        ...initialState,
         filterTerm: 'lo',
-        filteredIds: [1, 2, 3, 5],
+      });
+  });
+
+  it('should handle `showRepoDetail` action', () => {
+    expect(reducer(initialState, actions.showRepoDetail({ name: 'lorem' })))
+      .toEqual({
+        ...initialState,
+        activeRepo: 'lorem',
       });
   });
 });
