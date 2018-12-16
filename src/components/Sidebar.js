@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import Header from '~/ui/Header';
 import Content from '~/ui/Content';
@@ -16,16 +17,16 @@ const Sidebar = () => (
     </Header>
     <Content>
       <Card>
-        react
+        <Link to="/facebook/react/">react</Link>
       </Card>
       <Card>
-        graph-ql
+        <Link to="/facebook/graph-ql/">graph-ql</Link>
       </Card>
       <Card>
-        reason
+        <Link to="/facebook/reason/">reason</Link>
       </Card>
       <Card>
-        flow
+        <Link to="/facebook/graph-ql/">flow</Link>
       </Card>
     </Content>
   </React.Fragment>
