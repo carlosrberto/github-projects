@@ -7,6 +7,7 @@ import {
   loadRepoContributorsRequest,
   loadRepoContributorsSuccess,
   loadRepoContributorsFailure,
+  filterRepos,
 } from './actions';
 
 const payload = {};
@@ -45,5 +46,10 @@ describe('repos actions', () => {
   it('should create action for `loadRepoContributorsFailure`', () => {
     expect(loadRepoContributorsFailure(payload))
       .toEqual({ type: REPO.LOAD_CONTRIBUTORS_FAILURE, payload });
+  });
+
+  it('should create action for `filterRepos`', () => {
+    expect(filterRepos(payload))
+      .toEqual({ type: REPO.FILTER, payload });
   });
 });

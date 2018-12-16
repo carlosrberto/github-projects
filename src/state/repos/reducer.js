@@ -1,11 +1,13 @@
-import { LOAD_REPOS } from './types';
+import { LOAD_REPOS, REPO } from './types';
 import { normalizeRepoData } from './utils';
 
 const initialState = {
   isLoading: false,
   loadingError: false,
+  filterTerm: '',
   byId: {},
   allIds: [],
+  filteredIds: [],
   activeId: null,
 };
 
@@ -40,6 +42,18 @@ const repos = (state = initialState, action) => {
         isLoading: false,
         loadingError: true,
       };
+
+    case REPO.FILTER: {
+      const { payload: { term } } = action;
+      return {
+        ...state,
+        filterTerm: term,
+        filteredIds: state.allIds.filter(
+          item => state.byId[item].name.includes(term),
+        ),
+      };
+    }
+
     default:
       return state;
   }

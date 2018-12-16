@@ -27,3 +27,7 @@ export const loadRepoContributorsSuccess = payload => ({
 export const loadRepoContributorsFailure = payload => ({
   type: REPO.LOAD_CONTRIBUTORS_FAILURE, payload,
 });
+
+export const filterRepos = payload => ({
+  type: REPO.FILTER, payload,
+});
