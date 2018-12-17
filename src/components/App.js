@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Sidebar from '~/components/Sidebar';
-import Main from '~/components/Main';
+import MainContainer from '~/containers/MainContainer';
 
 import ss from './App.sass';
 
@@ -36,8 +36,7 @@ class App extends React.Component {
     }
   }
 
-  render() {
-    const { match } = this.props;
+  render() { // eslint-disable-line class-methods-use-this
     return (
       <div className={ss.app}>
         <div className={`${ss.container} ${ss.show_sidebar}`}>
@@ -46,9 +45,7 @@ class App extends React.Component {
           </div>
 
           <div className={ss.main}>
-            <Main
-              title={`${match.params.org}/${match.params.repo}`}
-            />
+            <MainContainer />
           </div>
         </div>
       </div>

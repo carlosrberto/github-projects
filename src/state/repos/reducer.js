@@ -21,6 +21,7 @@ const repos = (state = initialState, action) => {
     case LOAD_REPOS.SUCCESS: {
       const { payload: { data } } = action;
       const normalizedData = normalizeRepoData(data);
+
       return {
         ...state,
         isLoading: false,

@@ -9,17 +9,17 @@ import Section from '~/ui/Section';
 
 import ss from './Main.sass';
 
-const Main = ({ title }) => (
+const Main = ({ repo }) => (repo ? (
   <React.Fragment>
     <Header>
       <h2 className={ss.header}>
-        <GoMarkGithub className={ss.iconOcto} /> {title}
+        <GoMarkGithub className={ss.iconOcto} /> {repo.full_name}
       </h2>
     </Header>
     <Content>
       <div className={ss.content}>
         <Section title="About">
-          <p>lorem</p>
+          <p>{repo.description}</p>
         </Section>
         <Section title="Contributors">
           <p>lorem</p>
@@ -28,10 +28,10 @@ const Main = ({ title }) => (
       </div>
     </Content>
   </React.Fragment>
-);
+) : null);
 
 Main.propTypes = {
-  title: PropTypes.node,
+  repo: PropTypes.object,
 };
 
 export default Main;
