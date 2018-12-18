@@ -6,6 +6,7 @@ const initialState = {
   loadingError: false,
   filterTerm: '',
   byId: {},
+  byName: {},
   allIds: [],
   activeRepo: null,
 };
@@ -36,6 +37,7 @@ describe('repos reducer', () => {
         byId: {
           1: { id: 1, name: 'foo' },
         },
+        byName: { foo: 1 },
         allIds: [1],
       });
   });

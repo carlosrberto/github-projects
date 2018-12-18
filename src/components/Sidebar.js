@@ -2,8 +2,8 @@ import React from 'react';
 
 import Header from '~/ui/Header';
 import Content from '~/ui/Content';
-import RepoSearchContainer from '~/containers/RepoSearchContainer';
-import RepoListContainer from '~/containers/RepoListContainer';
+import RepoList from './RepoList';
+import RepoSearch from './RepoSearch';
 
 import ss from './Sidebar.sass';
 
@@ -11,11 +11,11 @@ const Sidebar = () => (
   <React.Fragment>
     <Header>
       <div className={ss.header}>
-        <RepoSearchContainer />
+        <RepoSearch />
       </div>
     </Header>
     <Content>
-      <RepoListContainer />
+      <RepoList />
     </Content>
   </React.Fragment>
 );

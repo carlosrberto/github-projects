@@ -6,6 +6,7 @@ const initialState = {
   loadingError: false,
   filterTerm: '',
   byId: {},
+  byName: {},
   allIds: [],
   activeRepo: null,
 };
@@ -29,6 +30,10 @@ const repos = (state = initialState, action) => {
         byId: {
           ...state.byId,
           ...normalizedData.byId,
+        },
+        byName: {
+          ...state.byName,
+          ...normalizedData.byName,
         },
         allIds: [
           ...state.allIds,

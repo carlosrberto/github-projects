@@ -1,15 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import RepoListItem from './RepoListItem';
 
-import { Link } from 'react-router-dom';
-import Card from '~/ui/Card';
-
-const RepoList = ({ items }) => (
+export const RepoList = ({ items }) => (
     <React.Fragment>
-      {items.map(item => (
-        <Card key={`repo-${item.id}`}>
-          <Link to={`/${item.full_name}/`}>{item.name}</Link>
-        </Card>
+      {items.map(id => (
+        <RepoListItem key={`repo-${id}`} id={id} />
       ))}
     </React.Fragment>
 );
@@ -18,4 +15,13 @@ RepoList.propTypes = {
   items: PropTypes.array,
 };
 
-export default RepoList;
+const mapStateToProps = state => ({
+  items: state.repos.allIds
+    .filter(
+      id => state.repos.byId[id].name.includes(state.repos.filterTerm),
+    ),
+});
+
+export default connect(
+  mapStateToProps,
+)(RepoList);

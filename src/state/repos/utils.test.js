@@ -11,6 +11,10 @@ describe('normalizeRepoData', () => {
         1: { id: 1, name: 'foo' },
         2: { id: 2, name: 'bar' },
       },
+      byName: {
+        foo: 1,
+        bar: 2,
+      },
     });
   });
 

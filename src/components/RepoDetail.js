@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { GoMarkGithub } from 'react-icons/go';
-
 import Header from '~/ui/Header';
 import Content from '~/ui/Content';
 import ReadmeFile from '~/ui/ReadmeFile';
 import Section from '~/ui/Section';
 
-import ss from './Main.sass';
+import ss from './RepoDetail.sass';
 
-const Main = ({ repo }) => (repo ? (
+const RepoDetail = ({ repo }) => (repo ? (
   <React.Fragment>
     <Header>
       <h2 className={ss.header}>
@@ -30,8 +30,17 @@ const Main = ({ repo }) => (repo ? (
   </React.Fragment>
 ) : null);
 
-Main.propTypes = {
+RepoDetail.propTypes = {
   repo: PropTypes.object,
 };
 
-export default Main;
+const mapStateToProps = (state) => {
+  const id = state.repos.byName[state.repos.activeRepo];
+  return {
+    repo: state.repos.byId[id],
+  };
+};
+
+export default connect(
+  mapStateToProps,
+)(RepoDetail);

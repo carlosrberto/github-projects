@@ -1,38 +1,36 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import Sidebar from '~/components/Sidebar';
-import MainContainer from '~/containers/MainContainer';
+import { connect } from 'react-redux';
+import { loadReposRequest, showRepoDetail } from '~/state/repos/actions';
+import Sidebar from './Sidebar';
+import RepoDetail from './RepoDetail';
 
 import ss from './App.sass';
 
-class App extends React.Component {
+export class App extends React.Component {
   componentDidMount() {
     const { params } = this.props.match;
-    const { loadReposRequest, showRepoDetail } = this.props;
-
-    loadReposRequest({
+    this.props.loadReposRequest({
       org: params.org,
     });
 
-    showRepoDetail({ name: params.repo });
+    this.props.showRepoDetail({ name: params.repo });
   }
 
   componentDidUpdate(prevProps) {
-    const { loadReposRequest, showRepoDetail } = this.props;
     const { params } = this.props.match;
     const { params: prevParams } = prevProps.match;
 
     if (params.org !== prevParams.org) {
       // update org
-      loadReposRequest({
+      this.props.loadReposRequest({
         org: params.org,
       });
     }
 
     if (params.repo !== prevParams.repo) {
       // update repo
-      showRepoDetail({ name: params.repo });
+      this.props.showRepoDetail({ name: params.repo });
     }
   }
 
@@ -45,7 +43,7 @@ class App extends React.Component {
           </div>
 
           <div className={ss.main}>
-            <MainContainer />
+            <RepoDetail />
           </div>
         </div>
       </div>
@@ -61,4 +59,10 @@ App.propTypes = {
   showRepoDetail: PropTypes.func,
 };
 
-export default App;
+export default connect(
+  null,
+  {
+    loadReposRequest,
+    showRepoDetail,
+  },
+)(App);
