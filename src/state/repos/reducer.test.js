@@ -8,6 +8,7 @@ const initialState = {
   byId: {},
   byName: {},
   allIds: [],
+  readmeByName: {},
   activeRepo: null,
 };
 
@@ -50,8 +51,22 @@ describe('repos reducer', () => {
       });
   });
 
+  it('should handle `loadReadmeSuccess` action', () => {
+    expect(reducer(initialState, actions.loadReadmeSuccess({
+      repo: 'react',
+      contents: 'lorem ipsum',
+    })))
+      .toEqual({
+        ...initialState,
+        readmeByName: {
+          ...initialState.readmeByName,
+          react: 'lorem ipsum',
+        },
+      });
+  });
+
   it('should handle `showRepoDetail` action', () => {
-    expect(reducer(initialState, actions.showRepoDetail({ name: 'lorem' })))
+    expect(reducer(initialState, actions.showRepoDetail({ repo: 'lorem' })))
       .toEqual({
         ...initialState,
         activeRepo: 'lorem',

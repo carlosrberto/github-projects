@@ -16,6 +16,18 @@ export const showRepoDetail = payload => ({
   type: REPO.SHOW_DETAIL, payload,
 });
 
+export const loadReadmeRequest = payload => ({
+  type: REPO.LOAD_README_REQUEST, payload,
+});
+
+export const loadReadmeSuccess = payload => ({
+  type: REPO.LOAD_README_SUCCESS, payload,
+});
+
+export const loadReadmeFailure = payload => ({
+  type: REPO.LOAD_README_FAILURE, payload,
+});
+
 export const loadRepoContributorsRequest = payload => ({
   type: REPO.LOAD_CONTRIBUTORS_REQUEST, payload,
 });

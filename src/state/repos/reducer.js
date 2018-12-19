@@ -8,6 +8,7 @@ const initialState = {
   byId: {},
   byName: {},
   allIds: [],
+  readmeByName: {},
   activeRepo: null,
 };
 
@@ -22,23 +23,29 @@ const repos = (state = initialState, action) => {
     case LOAD_REPOS.SUCCESS: {
       const { payload: { data } } = action;
       const normalizedData = normalizeRepoData(data);
+      const byId = {
+        ...state.byId,
+        ...normalizedData.byId,
+      };
+      const byName = {
+        ...state.byName,
+        ...normalizedData.byName,
+      };
+      const allIds = [
+        ...state.allIds,
+        ...normalizedData.allIds.filter(
+          // keep away any previously added id
+          id => !state.allIds.includes(id),
+        ),
+      ];
 
       return {
         ...state,
         isLoading: false,
         loadingError: false,
-        byId: {
-          ...state.byId,
-          ...normalizedData.byId,
-        },
-        byName: {
-          ...state.byName,
-          ...normalizedData.byName,
-        },
-        allIds: [
-          ...state.allIds,
-          ...normalizedData.allIds,
-        ],
+        byId,
+        byName,
+        allIds,
       };
     }
     case LOAD_REPOS.FAILURE:
@@ -51,8 +58,19 @@ const repos = (state = initialState, action) => {
     case REPO.SHOW_DETAIL:
       return {
         ...state,
-        activeRepo: action.payload.name,
+        activeRepo: action.payload.repo,
       };
+
+    case REPO.LOAD_README_SUCCESS: {
+      const { repo, contents } = action.payload;
+      return {
+        ...state,
+        readmeByName: {
+          ...state.readmeByName,
+          [repo]: contents,
+        },
+      };
+    }
 
     case REPO.FILTER: {
       const { payload: { term } } = action;
@@ -61,6 +79,7 @@ const repos = (state = initialState, action) => {
         filterTerm: term,
       };
     }
+
 
     default:
       return state;

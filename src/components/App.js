@@ -1,7 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { loadReposRequest, showRepoDetail } from '~/state/repos/actions';
+import {
+  loadReposRequest,
+  showRepoDetail,
+  loadReadmeRequest,
+} from '~/state/repos/actions';
 import Sidebar from './Sidebar';
 import RepoDetail from './RepoDetail';
 
@@ -14,7 +18,8 @@ export class App extends React.Component {
       org: params.org,
     });
 
-    this.props.showRepoDetail({ name: params.repo });
+    this.props.showRepoDetail({ repo: params.repo, org: params.org });
+    this.props.loadReadmeRequest({ repo: params.repo, org: params.org });
   }
 
   componentDidUpdate(prevProps) {
@@ -30,7 +35,8 @@ export class App extends React.Component {
 
     if (params.repo !== prevParams.repo) {
       // update repo
-      this.props.showRepoDetail({ name: params.repo });
+      this.props.showRepoDetail({ repo: params.repo, org: params.org });
+      this.props.loadReadmeRequest({ repo: params.repo, org: params.org });
     }
   }
 
@@ -57,6 +63,7 @@ App.propTypes = {
   match: PropTypes.object,
   loadReposRequest: PropTypes.func,
   showRepoDetail: PropTypes.func,
+  loadReadmeRequest: PropTypes.func,
 };
 
 export default connect(
@@ -64,5 +71,6 @@ export default connect(
   {
     loadReposRequest,
     showRepoDetail,
+    loadReadmeRequest,
   },
 )(App);

@@ -15,6 +15,9 @@ export const LOAD_REPOS = projects.defineAction('LOAD_REPOS', [
 export const REPO = projects.defineAction('REPO', [
   SHOW_DETAIL,
   'FILTER',
+  `LOAD_README_${REQUEST}`,
+  `LOAD_README_${SUCCESS}`,
+  `LOAD_README_${FAILURE}`,
   `LOAD_CONTRIBUTORS_${REQUEST}`,
   `LOAD_CONTRIBUTORS_${SUCCESS}`,
   `LOAD_CONTRIBUTORS_${FAILURE}`,
