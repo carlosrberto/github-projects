@@ -8,7 +8,7 @@
   "license": "MIT",
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "coveralls": "^3.0.2",
     "history": "^4.7.2",
     "jest": "^23.6.0",
